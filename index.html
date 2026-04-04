@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Dictionary - Instantly find word meanings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <img src="logo.svg" alt="Your Dictionary Logo">
+      <span class="logo-text">Your<br><strong>Dictionary</strong></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="quiz.html" class="nav-link">Quiz</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-title">Instantly find the meaning<br>of any word</h1>
+    <p class="hero-sub">Get definitions, examples, and synonyms in seconds.</p>
+    <div class="search-box">
+      <input type="text" placeholder="Type a word (e.g., happiness)" id="searchInput">
+      <button class="search-btn" onclick="searchWord()">Search</button>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>&copy; 2025 Your Dictionary. Clean & simple.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="#">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function searchWord() {
+    const query = document.getElementById('searchInput').value;
+    if (query) alert('Searching for: ' + query + '\n(API integration coming next!)');
+  }
+</script>
+
+</body>
+</html>
