@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz – Your Dictionary</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+.page-hero{background:linear-gradient(135deg,#fce4ec,#e8d5f5,#d0e8ff);padding:48px 24px 40px;text-align:center;}
+.page-hero h1{font-size:clamp(24px,4vw,38px);font-weight:900;color:var(--blue-dark);}
+.page-hero p{color:var(--text-mid);font-weight:600;margin-top:8px;}
+.quiz-section{padding:40px 0 80px;}
+.quiz-card{background:var(--white);border-radius:24px;box-shadow:var(--shadow-lg);overflow:hidden;max-width:600px;margin:0 auto;}
+.quiz-top{background:linear-gradient(135deg,#1a3a8f,#2563eb,#7c3aed);padding:24px 28px;color:#fff;}
+.quiz-progress{height:6px;background:rgba(255,255,255,0.2);border-radius:3px;margin-bottom:16px;overflow:hidden;}
+.quiz-bar{height:100%;background:#fff;border-radius:3px;transition:width 0.4s ease;}
+.quiz-meta{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:rgba(255,255,255,0.8);}
+.quiz-question{font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em;}
+.quiz-word{font-size:clamp(26px,4vw,38px);font-weight:900;}
+.quiz-body{padding:28px;}
+.options{display:grid;gap:12px;}
+.opt{padding:16px 20px;border:2px solid var(--border);border-radius:14px;cursor:pointer;font-weight:700;font-size:15px;color:var(--text-dark);transition:all 0.2s;text-align:left;background:var(--white);font-family:'Nunito',sans-serif;}
+.opt:hover:not(:disabled){border-color:var(--blue-mid);background:#f0f7ff;color:var(--blue-dark);}
+.opt.correct{border-color:#10b981;background:#ecfdf5;color:#065f46;}
+.opt.wrong{border-color:#ef4444;background:#fef2f2;color:#7f1d1d;}
+.opt:disabled{cursor:default;}
+.next-btn{display:block;width:100%;margin-top:20px;padding:15px;background:var(--gradient);color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:opacity 0.2s;}
+.next-btn:hover{opacity:0.88;}
+.next-btn:disabled{opacity:0.4;cursor:default;}
+.result-card{text-align:center;padding:48px 28px;}
+.result-emoji{font-size:60px;margin-bottom:16px;}
+.result-score{font-size:48px;font-weight:900;color:var(--blue-dark);margin-bottom:8px;}
+.result-msg{color:var(--text-mid);font-weight:600;font-size:16px;margin-bottom:28px;}
+.result-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-retry{padding:13px 28px;background:var(--gradient);color:#fff;border:none;border-radius:50px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;}
+.btn-home{padding:13px 28px;background:var(--white);border:2px solid var(--border);color:var(--text-dark);border-radius:50px;font-size:15px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;text-decoration:none;display:inline-block;}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3640039090708511" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 40 32" fill="none">
+        <rect x="2" y="24" width="36" height="4" rx="2" fill="#1a3a8f"/>
+        <path d="M4 20 C4 20 20 16 36 20" stroke="#1a3a8f" stroke-width="2.5" fill="none"/>
+        <path d="M20 4 L20 18" stroke="#1a3a8f" stroke-width="2"/>
+      </svg>
+      <span class="logo-text">Your<br><strong>Dictionary</strong></span>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="favorites.html" class="nav-link">Favorites</a>
+      <a href="quiz.html" class="nav-link active">Quiz</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a><a href="favorites.html">Favorites</a>
+  <a href="quiz.html">Quiz</a><a href="about.html">About</a>
+</div>
+
+<div class="page-hero">
+  <h1>🧠 Word Quiz</h1>
+  <p>Test your vocabulary — match each word to its definition.</p>
+</div>
+
+<section class="quiz-section">
+  <div class="container">
+    <div class="quiz-card" id="quizCard">
+      <div style="padding:60px;text-align:center;color:var(--text-light);font-weight:600;">Loading quiz...</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo"><span>Your Dictionary</span></div>
+    <p class="footer-copy">© 2025 Your Dictionary.</p>
+    <div class="footer-links"><a href="about.html">About</a></div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+const QUIZ_WORDS = [
+  {word:'serendipity', correct:'Finding something good without looking for it', wrong:['A type of musical instrument','The study of ancient civilizations','A mathematical principle']},
+  {word:'ephemeral', correct:'Lasting for only a short time', wrong:['Very large or impressive','Related to the ocean','Extremely bright or colorful']},
+  {word:'eloquent', correct:'Fluent and persuasive in speaking or writing', wrong:['Physically strong and powerful','Very quiet or secretive','Completely random or chaotic']},
+  {word:'melancholy', correct:'A feeling of deep sadness and pensiveness', wrong:['Intense excitement and joy','A type of tropical fruit','The science of weather prediction']},
+  {word:'perseverance', correct:'Continuing despite difficulty or failure', wrong:['A sudden burst of inspiration','The study of ancient texts','A feeling of deep contentment']},
+  {word:'ambiguous', correct:'Open to more than one interpretation', wrong:['Extremely precise and clear','Relating to sound and music','Having great courage or bravery']},
+  {word:'tenacious', correct:'Holding firmly to something; very determined', wrong:['Easily frightened or nervous','Relating to temperature changes','Very soft and delicate in texture']},
+  {word:'pragmatic', correct:'Dealing with things sensibly and practically', wrong:['Relating to ancient Rome','Overly emotional or dramatic','Connected with mathematical theory']},
+];
+
+let questions = [], current = 0, score = 0, answered = false;
+
+function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+
+function startQuiz() {
+  questions = shuffle(QUIZ_WORDS).slice(0, 7);
+  current = 0; score = 0;
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = questions[current];
+  const opts = shuffle([q.correct, ...q.wrong.slice(0,3)]);
+  answered = false;
+
+  document.getElementById('quizCard').innerHTML = `
+    <div class="quiz-top">
+      <div class="quiz-progress"><div class="quiz-bar" style="width:${(current/questions.length)*100}%"></div></div>
+      <div class="quiz-meta"><span>Question ${current+1} of ${questions.length}</span><span>Score: ${score}</span></div>
+      <div style="margin-top:12px">
+        <div class="quiz-question">What does this word mean?</div>
+        <div class="quiz-word">${q.word}</div>
+      </div>
+    </div>
+    <div class="quiz-body">
+      <div class="options">
+        ${opts.map(o => `<button class="opt" onclick="answer(this,'${escHtml(o)}','${escHtml(q.correct)}')">${o}</button>`).join('')}
+      </div>
+      <button class="next-btn" id="nextBtn" onclick="nextQ()" disabled>${current === questions.length-1 ? 'See Results' : 'Next →'}</button>
+    </div>
+  `;
+}
+
+function escHtml(s) { return s.replace(/'/g,"&#39;"); }
+
+function answer(btn, chosen, correct) {
+  if (answered) return;
+  answered = true;
+  document.querySelectorAll('.opt').forEach(b => { b.disabled = true; });
+  if (chosen === correct) { btn.classList.add('correct'); score++; }
+  else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('.opt').forEach(b => { if (b.textContent === correct) b.classList.add('correct'); });
+  }
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function nextQ() {
+  current++;
+  if (current >= questions.length) showResult();
+  else showQuestion();
+}
+
+function showResult() {
+  const pct = Math.round((score/questions.length)*100);
+  const emoji = pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '📚';
+  const msg = pct >= 80 ? 'Excellent vocabulary!' : pct >= 50 ? 'Good effort! Keep learning.' : 'Keep practicing — you\'ll improve!';
+  document.getElementById('quizCard').innerHTML = `
+    <div class="result-card">
+      <div class="result-emoji">${emoji}</div>
+      <div class="result-score">${score}/${questions.length}</div>
+      <div class="result-msg">${msg}</div>
+      <div class="result-btns">
+        <button class="btn-retry" onclick="startQuiz()">Try Again</button>
+        <a class="btn-home" href="index.html">Back to Home</a>
+      </div>
+    </div>
+  `;
+}
+
+startQuiz();
+</script>
+</body>
+</html>
