@@ -1,0 +1,48 @@
+/* ===== YOUR DICTIONARY - style.css (Updated) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue-dark: #1a3a8f;
+  --blue-mid: #2563eb;
+  --text-dark: #0f172a;
+  --text-mid: #334155;
+  --text-light: #64748b;
+  --white: #ffffff;
+  --bg: #f8fafc;
+  --border: #e2e8f0;
+  --gradient: linear-gradient(135deg, #fce4ec, #e8d5f5, #d0e8ff, #b2f0ff);
+  --shadow: 0 4px 12px rgba(26,58,143,0.08);
+  --shadow-lg: 0 8px 24px rgba(26,58,143,0.12);
+}
+
+body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text-dark); min-height: 100vh; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+/* HEADER */
+.header { background: var(--white); border-bottom: 1px solid var(--border); sticky; top: 0; z-index: 100; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo img { height: 44px; width: auto; }
+.logo-text { color: var(--blue-dark); font-weight: 800; font-size: 16px; line-height: 1.2; }
+.logo-text strong { font-weight: 900; font-size: 18px; }
+
+.nav { display: flex; gap: 8px; }
+.nav-link { text-decoration: none; color: var(--text-mid); font-weight: 700; font-size: 14px; padding: 8px 16px; border-radius: 50px; }
+.nav-link:hover, .nav-link.active { background: #f0f4ff; color: var(--blue-dark); }
+
+/* HERO */
+.hero { background: var(--gradient); padding: 60px 20px; text-align: center; }
+.hero-title { font-size: clamp(28px, 5vw, 42px); font-weight: 900; color: var(--blue-dark); }
+.hero-sub { color: var(--text-mid); margin: 12px 0 30px; font-weight: 600; }
+.search-box { background: var(--white); max-width: 500px; margin: 0 auto; border-radius: 50px; padding: 8px; display: flex; box-shadow: var(--shadow-lg); }
+.search-box input { flex: 1; border: none; outline: none; padding: 0 16px; font-weight: 700; font-size: 16px; color: var(--text-dark); }
+.search-box input::placeholder { color: var(--text-light); }
+.search-btn { background: var(--blue-dark); color: #fff; border: none; padding: 12px 24px; border-radius: 50px; font-weight: 800; cursor: pointer; }
+
+/* FOOTER */
+.footer { background: var(--white); border-top: 1px solid var(--border); padding: 30px 20px; margin-top: auto; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; color: var(--text-light); font-size: 13px; flex-wrap: wrap; gap: 10px; }
+.footer-links { display: flex; gap: 16px; }
+.footer-links a { color: var(--text-light); text-decoration: none; }
