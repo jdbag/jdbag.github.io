@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Dictionary – Free English Dictionary, Definitions & Translations</title>
+<meta name="description" content="Your Dictionary is a free online English dictionary. Look up word definitions, synonyms, examples, pronunciations, and translations in 30+ languages. Instant results, no signup required.">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3640039090708511" crossorigin="anonymous"></script>
+<style>
+.ad-unit{max-width:880px;margin:0 auto 32px;padding:0 24px;text-align:center}
+.tips-section{padding:0 0 56px}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.tip-card{background:var(--white);border-radius:20px;padding:28px 24px;box-shadow:var(--shadow);border-top:4px solid var(--blue-mid)}
+.tip-card h3{font-size:17px;font-weight:900;color:var(--blue-dark);margin-bottom:10px}
+.tip-card p{font-size:14px;color:var(--text-mid);font-weight:600;line-height:1.8}
+.words-section{padding:0 0 56px}
+.words-table{background:var(--white);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.words-table table{width:100%;border-collapse:collapse}
+.words-table th{background:linear-gradient(135deg,#1a3a8f,#2563eb);color:#fff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:14px 20px;text-align:left}
+.words-table td{padding:13px 20px;font-size:14px;font-weight:600;color:var(--text-mid);border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.words-table tr:last-child td{border-bottom:none}
+.words-table tr:hover td{background:#f0f7ff;color:var(--blue-dark)}
+.words-table td:first-child{font-weight:800;color:var(--blue-dark);font-size:15px}
+.faq-section{padding:0 0 64px}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--white);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.faq-q{padding:18px 24px;font-size:15px;font-weight:800;color:var(--blue-dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q::after{content:'＋';font-size:20px;color:var(--blue-mid);transition:transform .2s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 24px 18px;font-size:14px;color:var(--text-mid);font-weight:600;line-height:1.8}
+.faq-item.open .faq-a{display:block}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 40 32" fill="none">
+        <rect x="2" y="24" width="36" height="4" rx="2" fill="#1a3a8f"/>
+        <path d="M20 4 C10 4 4 10 4 20 L20 18 L36 20 C36 10 30 4 20 4Z" fill="#1a3a8f" opacity="0.15"/>
+        <path d="M4 20 C4 20 20 16 36 20" stroke="#1a3a8f" stroke-width="2.5" fill="none"/>
+        <path d="M20 4 L20 18" stroke="#1a3a8f" stroke-width="2"/>
+        <path d="M6 8 C6 8 20 6 34 8" stroke="#1a3a8f" stroke-width="2" fill="none"/>
+        <path d="M5 12 C5 12 20 10 35 12" stroke="#1a3a8f" stroke-width="1.5" fill="none" opacity="0.6"/>
+        <path d="M4.5 16 C4.5 16 20 14 35.5 16" stroke="#1a3a8f" stroke-width="1.5" fill="none" opacity="0.4"/>
+      </svg>
+      <span class="logo-text">Your<br><strong>Dictionary</strong></span>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="translate.html" class="nav-link">Translate</a>
+      <a href="favorites.html" class="nav-link">Favorites</a>
+      <a href="quiz.html" class="nav-link">Quiz</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="translate.html">Translate</a>
+  <a href="favorites.html">Favorites</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="about.html">About</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bg">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="net"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">Find the meaning of<br><span class="gradient-text">any word, instantly</span></h1>
+    <p class="hero-sub">Definitions, examples, synonyms, pronunciations and translations in 30+ languages — all free.</p>
+    <div class="search-box" id="heroSearch">
+      <span class="search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></span>
+      <input type="text" id="heroInput" placeholder="Search a word..." autocomplete="off" spellcheck="false">
+      <button class="search-btn" id="heroBtn">Search</button>
+    </div>
+    <div class="suggestions" id="suggestions"></div>
+  </div>
+</section>
+
+<div class="ad-unit" style="margin-top:32px">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3640039090708511" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<section class="results-section" id="resultsSection" style="display:none">
+  <div class="container"><div id="resultsContent"></div></div>
+</section>
+
+<section class="wod-section" id="wodSection">
+  <div class="container">
+    <div class="section-label">✦ Word of the Day</div>
+    <div class="wod-card" id="wodCard"><div class="wod-loading">Loading...</div></div>
+  </div>
+</section>
+
+<section class="words-section">
+  <div class="container">
+    <div class="section-label">✦ Featured Vocabulary</div>
+    <div class="words-table">
+      <table>
+        <thead><tr><th>Word</th><th>Part of Speech</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr onclick="triggerSearch('serendipity')"><td>serendipity</td><td>noun</td><td>The luck of finding pleasant things by chance.</td></tr>
+          <tr onclick="triggerSearch('ephemeral')"><td>ephemeral</td><td>adjective</td><td>Lasting for a very short time; transitory.</td></tr>
+          <tr onclick="triggerSearch('eloquent')"><td>eloquent</td><td>adjective</td><td>Fluent and persuasive in speaking or writing.</td></tr>
+          <tr onclick="triggerSearch('melancholy')"><td>melancholy</td><td>noun</td><td>A deep feeling of sadness with no clear cause.</td></tr>
+          <tr onclick="triggerSearch('resilience')"><td>resilience</td><td>noun</td><td>The ability to recover quickly from difficulties.</td></tr>
+          <tr onclick="triggerSearch('ambiguous')"><td>ambiguous</td><td>adjective</td><td>Open to more than one interpretation.</td></tr>
+          <tr onclick="triggerSearch('pragmatic')"><td>pragmatic</td><td>adjective</td><td>Dealing with things in a sensible, practical way.</td></tr>
+          <tr onclick="triggerSearch('meticulous')"><td>meticulous</td><td>adjective</td><td>Showing great attention to detail; very careful.</td></tr>
+          <tr onclick="triggerSearch('tenacious')"><td>tenacious</td><td>adjective</td><td>Persistent, determined, not giving up easily.</td></tr>
+          <tr onclick="triggerSearch('ubiquitous')"><td>ubiquitous</td><td>adjective</td><td>Present or found everywhere at the same time.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="ad-unit">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3640039090708511" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<section class="categories-section">
+  <div class="container">
+    <div class="section-label">✦ Browse by Category</div>
+    <div class="categories-grid">
+      <div class="cat-card" data-word="ephemeral"><div class="cat-icon">📚</div><div class="cat-name">Literature</div><div class="cat-example">ephemeral</div></div>
+      <div class="cat-card" data-word="hypothesis"><div class="cat-icon">🔬</div><div class="cat-name">Science</div><div class="cat-example">hypothesis</div></div>
+      <div class="cat-card" data-word="algorithm"><div class="cat-icon">💻</div><div class="cat-name">Technology</div><div class="cat-example">algorithm</div></div>
+      <div class="cat-card" data-word="serendipity"><div class="cat-icon">✨</div><div class="cat-name">Beautiful Words</div><div class="cat-example">serendipity</div></div>
+      <div class="cat-card" data-word="democracy"><div class="cat-icon">🏛️</div><div class="cat-name">Politics</div><div class="cat-example">democracy</div></div>
+      <div class="cat-card" data-word="melancholy"><div class="cat-icon">🎭</div><div class="cat-name">Emotions</div><div class="cat-example">melancholy</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="tips-section">
+  <div class="container">
+    <div class="section-label">✦ Vocabulary Building Tips</div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h3>📖 Read Every Day</h3>
+        <p>Reading books, articles, and news is the most natural way to build vocabulary. When you encounter an unfamiliar word, look it up immediately and add it to your Favorites for review later.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🗂️ Use Flashcards</h3>
+        <p>Write new words on flashcards — word on one side, definition on the other. Review them daily. Spaced repetition is scientifically proven to improve long-term memory retention.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🗣️ Use Words in Context</h3>
+        <p>The best way to remember a word is to use it in sentences. Try to write three different sentences with each new word you learn. This builds meaningful mental connections.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🔤 Learn Word Roots</h3>
+        <p>Many English words share Latin and Greek roots. Learning roots like "bene" (good), "port" (carry), or "dict" (say) helps you guess the meaning of unfamiliar words instantly.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🎯 Focus on Context Clues</h3>
+        <p>Pay attention to how words are used in sentences. The surrounding words often reveal the meaning. This skill helps you read faster and understand more without stopping.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🌐 Try Multiple Languages</h3>
+        <p>Learning a second language expands your understanding of your first language. Use our Translate feature to explore how concepts differ across Arabic, French, Spanish, and more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ad-unit">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3640039090708511" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<section class="faq-section">
+  <div class="container">
+    <div class="section-label">✦ Frequently Asked Questions</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is Your Dictionary?</div>
+        <div class="faq-a">Your Dictionary is a free online English dictionary that provides instant definitions, synonyms, example sentences, and audio pronunciations. It also includes a translation tool for 30+ languages, a vocabulary quiz, and the ability to save favorite words for later study — all without any registration.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is Your Dictionary completely free?</div>
+        <div class="faq-a">Yes, Your Dictionary is 100% free. There is no registration, subscription, or payment required. All features including word search, translation, pronunciation, quiz, and favorites are available at no cost to every visitor.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How many languages does the translator support?</div>
+        <div class="faq-a">The translation feature supports over 30 languages including English, Arabic, French, Spanish, German, Italian, Portuguese, Russian, Chinese, Japanese, Korean, Turkish, Hindi, Persian, Indonesian, Vietnamese, Ukrainian, Greek, Hebrew, and many more. You can translate in both directions between any two supported languages.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How does the pronunciation feature work?</div>
+        <div class="faq-a">Your Dictionary uses your browser's built-in text-to-speech (TTS) technology. This works in all modern browsers including Chrome, Firefox, Edge, and Safari. Click the speaker icon on any word result to hear it pronounced. The translation page also lets you hear both the original text and the translated output.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is my data and search history private?</div>
+        <div class="faq-a">Your favorites, search history, and quiz scores are stored locally in your browser only. This data never leaves your device and cannot be accessed by any server or third party. You can delete it at any time through your browser settings. We do not collect personal information.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What API powers the word definitions?</div>
+        <div class="faq-a">Definitions are sourced from the Free Dictionary API at dictionaryapi.dev, an open-source and publicly available service. Translations are powered by the MyMemory API. Both are free services that do not require authentication.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I use Your Dictionary on my phone?</div>
+        <div class="faq-a">Yes, Your Dictionary is fully responsive and optimized for mobile phones and tablets. The interface adapts to any screen size, so you get the same full experience whether you are on a desktop, laptop, tablet, or smartphone.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recent-section" id="recentSection" style="display:none">
+  <div class="container">
+    <div class="section-label">✦ Recent Searches</div>
+    <div class="recent-list" id="recentList"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg viewBox="0 0 40 32" fill="none" width="32"><rect x="2" y="24" width="36" height="4" rx="2" fill="#fff" opacity="0.5"/><path d="M20 4 L20 20" stroke="#fff" stroke-width="2" opacity="0.7"/><path d="M4 20 C4 20 20 16 36 20" stroke="#fff" stroke-width="2.5" fill="none" opacity="0.7"/></svg>
+      <span>Your Dictionary</span>
+    </div>
+    <p class="footer-copy">© 2025 Your Dictionary. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+function toggleFaq(el){el.parentElement.classList.toggle('open')}
+function triggerSearch(w){
+  document.getElementById('heroInput').value=w;
+  document.getElementById('heroBtn').click();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
