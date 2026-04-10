@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary Quiz – Your Dictionary | Test Your English Word Knowledge</title>
+<meta name="description" content="Test your English vocabulary with our free multiple-choice quiz. Learn word definitions, improve your language skills, and track your progress. Free, no sign-up needed.">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3640039090708511" crossorigin="anonymous"></script>
+<style>
+.page-hero{background:linear-gradient(135deg,#fce4ec,#e8d5f5,#d0e8ff);padding:48px 24px 44px;text-align:center}
+.page-hero h1{font-size:clamp(24px,4vw,38px);font-weight:900;color:var(--blue-dark)}
+.page-hero p{color:var(--text-mid);font-weight:600;margin-top:8px}
+.ad-unit{max-width:880px;margin:0 auto 32px;padding:0 24px;text-align:center}
+.quiz-section{padding:40px 0 80px}
+.quiz-card{background:var(--white);border-radius:24px;box-shadow:var(--shadow-lg);padding:36px 40px;max-width:680px;margin:0 auto 32px}
+@media(max-width:640px){.quiz-card{padding:24px 20px}}
+.quiz-progress{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.progress-bar{flex:1;height:8px;background:var(--border);border-radius:50px;overflow:hidden}
+.progress-fill{height:100%;background:var(--gradient);border-radius:50px;transition:width .4s ease}
+.progress-text{font-size:13px;font-weight:800;color:var(--text-light);white-space:nowrap}
+.quiz-question{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--blue-mid);margin-bottom:8px}
+.quiz-word{font-size:clamp(28px,5vw,42px);font-weight:900;color:var(--blue-dark);margin-bottom:8px}
+.quiz-phonetic{font-size:16px;color:var(--text-light);font-style:italic;font-family:'Lora',serif;margin-bottom:28px}
+.options-grid{display:flex;flex-direction:column;gap:10px}
+.option-btn{padding:16px 20px;border-radius:14px;border:2px solid var(--border);background:var(--white);font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;color:var(--text-dark);cursor:pointer;text-align:left;transition:all .2s;line-height:1.5}
+.option-btn:hover:not(:disabled){border-color:var(--blue-mid);background:#f0f7ff;color:var(--blue-dark);transform:translateX(4px)}
+.option-btn.correct{border-color:#10b981;background:#d1fae5;color:#065f46}
+.option-btn.wrong{border-color:#ef4444;background:#fee2e2;color:#991b1b}
+.option-btn:disabled{cursor:default}
+.quiz-feedback{margin-top:20px;padding:16px 20px;border-radius:14px;font-size:15px;font-weight:700;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct{background:#d1fae5;color:#065f46;border:2px solid #10b981}
+.quiz-feedback.wrong{background:#fee2e2;color:#991b1b;border:2px solid #ef4444}
+.quiz-next{margin-top:16px;background:var(--gradient);color:#fff;border:none;border-radius:50px;padding:13px 32px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:opacity .2s,transform .15s;display:none}
+.quiz-next.show{display:inline-block}
+.quiz-next:hover{opacity:.88;transform:scale(1.03)}
+.score-card{background:linear-gradient(135deg,#1a3a8f,#2563eb,#7c3aed);border-radius:24px;padding:40px;color:#fff;text-align:center;max-width:680px;margin:0 auto 32px;display:none}
+.score-card.show{display:block}
+.score-emoji{font-size:60px;margin-bottom:16px}
+.score-title{font-size:28px;font-weight:900;margin-bottom:8px}
+.score-subtitle{color:rgba(255,255,255,.8);font-size:16px;font-weight:600;margin-bottom:24px}
+.score-number{font-size:52px;font-weight:900;margin-bottom:8px}
+.score-label{color:rgba(255,255,255,.7);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:28px}
+.restart-btn{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);color:#fff;border-radius:50px;padding:13px 32px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:all .2s}
+.restart-btn:hover{background:rgba(255,255,255,.3)}
+.why-section{padding:0 0 56px}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.why-card{background:var(--white);border-radius:18px;padding:24px 20px;box-shadow:var(--shadow);border-top:4px solid var(--blue-mid)}
+.why-card h3{font-size:16px;font-weight:900;color:var(--blue-dark);margin-bottom:10px}
+.why-card p{font-size:14px;color:var(--text-mid);font-weight:600;line-height:1.75}
+.wordlist-section{padding:0 0 56px}
+.wordlist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.word-chip{background:var(--white);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);cursor:pointer;transition:all .2s;border:2px solid transparent}
+.word-chip:hover{border-color:var(--blue-mid);transform:translateY(-2px)}
+.word-chip .w{font-size:16px;font-weight:900;color:var(--blue-dark)}
+.word-chip .d{font-size:12px;color:var(--text-light);font-weight:700;margin-top:4px;line-height:1.5}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 40 32" fill="none">
+        <rect x="2" y="24" width="36" height="4" rx="2" fill="#1a3a8f"/>
+        <path d="M20 4 C10 4 4 10 4 20 L20 18 L36 20 C36 10 30 4 20 4Z" fill="#1a3a8f" opacity="0.15"/>
+        <path d="M4 20 C4 20 20 16 36 20" stroke="#1a3a8f" stroke-width="2.5" fill="none"/>
+        <path d="M20 4 L20 18" stroke="#1a3a8f" stroke-width="2"/>
+        <path d="M6 8 C6 8 20 6 34 8" stroke="#1a3a8f" stroke-width="2" fill="none"/>
+        <path d="M5 12 C5 12 20 10 35 12" stroke="#1a3a8f" stroke-width="1.5" fill="none" opacity="0.6"/>
+        <path d="M4.5 16 C4.5 16 20 14 35.5 16" stroke="#1a3a8f" stroke-width="1.5" fill="none" opacity="0.4"/>
+      </svg>
+      <span class="logo-text">Your<br><strong>Dictionary</strong></span>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="translate.html" class="nav-link">Translate</a>
+      <a href="favorites.html" class="nav-link">Favorites</a>
+      <a href="quiz.html" class="nav-link active">Quiz</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a><a href="translate.html">Translate</a>
+  <a href="favorites.html">Favorites</a><a href="quiz.html">Quiz</a><a href="about.html">About</a>
+</div>
+
+<div class="page-hero">
+  <h1>🧠 Vocabulary Quiz</h1>
+  <p>Test your English vocabulary — match each word to its definition</p>
+</div>
+
+<div class="ad-unit" style="margin-top:32px">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3640039090708511" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<section class="quiz-section">
+  <div class="container">
+
+    <!-- QUIZ CARD -->
+    <div class="quiz-card" id="quizCard">
+      <div class="quiz-progress">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+        <div class="progress-text" id="progressText">1 / 10</div>
+      </div>
+      <div class="quiz-question">What does this word mean?</div>
+      <div class="quiz-word" id="quizWord">serendipity</div>
+      <div class="quiz-phonetic" id="quizPhonetic">/ˌserənˈdɪpɪti/</div>
+      <div class="options-grid" id="optionsGrid"></div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <button class="quiz-next" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
+    </div>
+
+    <!-- SCORE CARD -->
+    <div class="score-card" id="scoreCard">
+      <div class="score-emoji" id="scoreEmoji">🏆</div>
+      <div class="score-title" id="scoreTitle">Quiz Complete!</div>
+      <div class="score-subtitle" id="scoreSubtitle">Great job working on your vocabulary!</div>
+      <div class="score-number" id="scoreNumber">0/10</div>
+      <div class="score-label">Correct Answers</div>
+      <button class="restart-btn" onclick="startQuiz()">🔄 Try Again</button>
+    </div>
+
+    <div class="ad-unit">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3640039090708511" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- WHY QUIZ -->
+    <div class="section-label" style="margin-bottom:20px">✦ Why Take Vocabulary Quizzes?</div>
+    <section class="why-section">
+      <div class="why-grid">
+        <div class="why-card">
+          <h3>🧠 Strengthens Memory</h3>
+          <p>Testing yourself on word meanings is one of the most effective ways to move new words into long-term memory. Research in cognitive science shows that active recall beats passive review every time.</p>
+        </div>
+        <div class="why-card">
+          <h3>📈 Tracks Progress</h3>
+          <p>Regular quizzing helps you see how your vocabulary is improving over time. Identifying words you consistently miss tells you exactly where to focus your study efforts.</p>
+        </div>
+        <div class="why-card">
+          <h3>🎯 Improves Reading</h3>
+          <p>A larger vocabulary makes reading faster and more enjoyable. When you recognize words automatically, you can focus on understanding meaning rather than decoding individual words.</p>
+        </div>
+        <div class="why-card">
+          <h3>🗣️ Boosts Communication</h3>
+          <p>Knowing more words gives you more ways to express yourself clearly. Whether writing or speaking, a strong vocabulary helps you find the right word for every situation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORD LIST -->
+    <div class="section-label" style="margin-bottom:20px">✦ Words in This Quiz</div>
+    <section class="wordlist-section">
+      <div class="wordlist-grid" id="wordlistGrid"></div>
+    </section>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg viewBox="0 0 40 32" fill="none" width="32"><rect x="2" y="24" width="36" height="4" rx="2" fill="#fff" opacity="0.5"/><path d="M20 4 L20 20" stroke="#fff" stroke-width="2" opacity="0.7"/><path d="M4 20 C4 20 20 16 36 20" stroke="#fff" stroke-width="2.5" fill="none" opacity="0.7"/></svg>
+      <span>Your Dictionary</span>
+    </div>
+    <p class="footer-copy">© 2025 Your Dictionary. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));
+
+const QUIZ_WORDS = [
+  {word:'serendipity',phonetic:'/ˌserənˈdɪpɪti/',def:'The luck of finding pleasant things by chance.',wrong:['A deep feeling of sadness','The study of ancient languages','Extreme caution or carefulness']},
+  {word:'ephemeral',phonetic:'/ɪˈfem(ə)r(ə)l/',def:'Lasting for a very short time; transitory.',wrong:['Relating to the earth or land','Having a strong, unpleasant smell','Extremely large or impressive']},
+  {word:'eloquent',phonetic:'/ˈeləkwənt/',def:'Fluent and persuasive in speaking or writing.',wrong:['Moving very slowly or carefully','Extremely tired or exhausted','Having no particular purpose']},
+  {word:'melancholy',phonetic:'/ˈmelənkɒli/',def:'A deep feeling of sadness, typically with no obvious cause.',wrong:['Extreme happiness and excitement','The quality of being clever','A tendency to avoid social contact']},
+  {word:'resilience',phonetic:'/rɪˈzɪliəns/',def:'The ability to recover quickly from difficulties.',wrong:['The act of resisting authority','A state of complete confusion','The tendency to act without thinking']},
+  {word:'ambiguous',phonetic:'/æmˈbɪɡjuəs/',def:'Open to more than one interpretation.',wrong:['Impossible to achieve or do','Very large in size or extent','Happening at the same time']},
+  {word:'pragmatic',phonetic:'/præɡˈmætɪk/',def:'Dealing with things sensibly and realistically.',wrong:['Relating to the distant past','Full of energy and enthusiasm','Extremely careful about small details']},
+  {word:'meticulous',phonetic:'/mɪˈtɪkjʊləs/',def:'Showing great attention to detail; very careful and precise.',wrong:['Moving very quickly','Having little or no importance','Relating to or involving music']},
+  {word:'tenacious',phonetic:'/tɪˈneɪʃəs/',def:'Persistent and determined; not giving up easily.',wrong:['Occurring every ten years','Related to tenderness or softness','Extremely thin and delicate']},
+  {word:'ubiquitous',phonetic:'/juːˈbɪkwɪtəs/',def:'Present or found everywhere at the same time.',wrong:['Relating to cities and urban areas','Difficult to understand or follow','Happening unexpectedly and suddenly']},
+];
+
+let questions=[],current=0,score=0,answered=false;
+
+function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+
+function startQuiz(){
+  questions=shuffle(QUIZ_WORDS).slice(0,10);
+  current=0;score=0;answered=false;
+  document.getElementById('quizCard').style.display='block';
+  document.getElementById('scoreCard').classList.remove('show');
+  renderWordList();
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q=questions[current];
+  document.getElementById('quizWord').textContent=q.word;
+  document.getElementById('quizPhonetic').textContent=q.phonetic;
+  document.getElementById('progressText').textContent=(current+1)+' / '+questions.length;
+  document.getElementById('progressFill').style.width=((current/questions.length)*100)+'%';
+  document.getElementById('quizFeedback').className='quiz-feedback';
+  document.getElementById('quizFeedback').textContent='';
+  document.getElementById('nextBtn').className='quiz-next';
+  answered=false;
+
+  const opts=shuffle([q.def,...q.wrong]);
+  document.getElementById('optionsGrid').innerHTML=opts.map(o=>`
+    <button class="option-btn" onclick="answer(this,'${o.replace(/'/g,"\\'")}','${q.def.replace(/'/g,"\\'")}')">
+      ${o}
+    </button>
+  `).join('');
+}
+
+function answer(btn,chosen,correct){
+  if(answered)return;
+  answered=true;
+  const allBtns=document.querySelectorAll('.option-btn');
+  allBtns.forEach(b=>b.disabled=true);
+  const fb=document.getElementById('quizFeedback');
+
+  if(chosen===correct){
+    score++;
+    btn.classList.add('correct');
+    fb.textContent='✓ Correct! Well done.';
+    fb.className='quiz-feedback show correct';
+  } else {
+    btn.classList.add('wrong');
+    allBtns.forEach(b=>{if(b.textContent.trim()===correct)b.classList.add('correct');});
+    fb.textContent='✗ Not quite. The correct answer is: "'+correct+'"';
+    fb.className='quiz-feedback show wrong';
+  }
+  document.getElementById('nextBtn').className='quiz-next show';
+}
+
+function nextQuestion(){
+  current++;
+  if(current>=questions.length){showScore();return;}
+  renderQuestion();
+}
+
+function showScore(){
+  document.getElementById('quizCard').style.display='none';
+  const sc=document.getElementById('scoreCard');
+  sc.classList.add('show');
+  const pct=Math.round((score/questions.length)*100);
+  document.getElementById('scoreNumber').textContent=score+'/'+questions.length;
+  let emoji='🏆',title='Excellent!',sub='Your vocabulary is outstanding!';
+  if(pct<50){emoji='📚';title='Keep Learning!';sub='Review the words and try again — you\'ll improve!';}
+  else if(pct<70){emoji='👍';title='Good Effort!';sub='You\'re building a solid vocabulary. Keep going!';}
+  else if(pct<90){emoji='🌟';title='Great Job!';sub='You know your words very well!';}
+  document.getElementById('scoreEmoji').textContent=emoji;
+  document.getElementById('scoreTitle').textContent=title;
+  document.getElementById('scoreSubtitle').textContent=sub;
+}
+
+function renderWordList(){
+  document.getElementById('wordlistGrid').innerHTML=QUIZ_WORDS.map(w=>`
+    <div class="word-chip">
+      <div class="w">${w.word}</div>
+      <div class="d">${w.def}</div>
+    </div>
+  `).join('');
+}
+
+startQuiz();
+</script>
+</body>
+</html>
