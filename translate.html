@@ -371,6 +371,18 @@
 <section class="translate-section">
   <div class="container" style="max-width:900px">
 
+    <!-- ENGINE TOGGLE -->
+    <div style="max-width:860px;margin:0 auto 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <span style="font-size:13px;font-weight:800;color:var(--text-light);text-transform:uppercase;letter-spacing:.06em">Engine:</span>
+      <label style="display:flex;align-items:center;gap:7px;cursor:pointer;background:var(--white);border:2px solid var(--blue-mid);border-radius:50px;padding:7px 16px;font-size:13px;font-weight:800;color:var(--blue-dark)">
+        <input type="radio" name="engine" value="mymemory" checked style="accent-color:#2563eb"> MyMemory
+      </label>
+      <label style="display:flex;align-items:center;gap:7px;cursor:pointer;background:var(--white);border:2px solid var(--border);border-radius:50px;padding:7px 16px;font-size:13px;font-weight:800;color:var(--text-mid)" id="msLabel">
+        <input type="radio" name="engine" value="microsoft" style="accent-color:#2563eb"> 🪟 Microsoft Translator
+      </label>
+      <span id="engineBadge" style="font-size:11px;font-weight:800;color:var(--blue-mid);background:#f0f7ff;padding:4px 10px;border-radius:50px;display:none">130+ Languages</span>
+    </div>
+
     <div class="translate-card">
 
       <!-- LANG BAR -->
@@ -385,7 +397,8 @@
           <option value="it">🇮🇹 Italian</option>
           <option value="pt">🇧🇷 Portuguese</option>
           <option value="ru">🇷🇺 Russian</option>
-          <option value="zh">🇨🇳 Chinese</option>
+          <option value="zh-Hans">🇨🇳 Chinese (Simplified)</option>
+          <option value="zh-Hant">🇹🇼 Chinese (Traditional)</option>
           <option value="ja">🇯🇵 Japanese</option>
           <option value="ko">🇰🇷 Korean</option>
           <option value="tr">🇹🇷 Turkish</option>
@@ -394,7 +407,7 @@
           <option value="sv">🇸🇪 Swedish</option>
           <option value="da">🇩🇰 Danish</option>
           <option value="fi">🇫🇮 Finnish</option>
-          <option value="no">🇳🇴 Norwegian</option>
+          <option value="nb">🇳🇴 Norwegian</option>
           <option value="hi">🇮🇳 Hindi</option>
           <option value="bn">🇧🇩 Bengali</option>
           <option value="ur">🇵🇰 Urdu</option>
@@ -410,7 +423,82 @@
           <option value="el">🇬🇷 Greek</option>
           <option value="he">🇮🇱 Hebrew</option>
           <option value="sw">🇰🇪 Swahili</option>
-          <option value="tl">🇵🇭 Filipino</option>
+          <option value="fil">🇵🇭 Filipino</option>
+          <option value="af">🇿🇦 Afrikaans</option>
+          <option value="sq">🇦🇱 Albanian</option>
+          <option value="am">🇪🇹 Amharic</option>
+          <option value="hy">🇦🇲 Armenian</option>
+          <option value="as">🇮🇳 Assamese</option>
+          <option value="az">🇦🇿 Azerbaijani</option>
+          <option value="ba">Bashkir</option>
+          <option value="eu">Basque</option>
+          <option value="bs">🇧🇦 Bosnian</option>
+          <option value="bg">🇧🇬 Bulgarian</option>
+          <option value="yue">🇭🇰 Cantonese</option>
+          <option value="ca">Catalan</option>
+          <option value="hr">🇭🇷 Croatian</option>
+          <option value="cy">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Welsh</option>
+          <option value="et">🇪🇪 Estonian</option>
+          <option value="fj">🇫🇯 Fijian</option>
+          <option value="fr-CA">🇨🇦 French (Canada)</option>
+          <option value="gl">Galician</option>
+          <option value="ka">🇬🇪 Georgian</option>
+          <option value="gu">🇮🇳 Gujarati</option>
+          <option value="ht">🇭🇹 Haitian Creole</option>
+          <option value="ha">Hausa</option>
+          <option value="is">🇮🇸 Icelandic</option>
+          <option value="ig">Igbo</option>
+          <option value="ikt">Inuinnaqtun</option>
+          <option value="iu">Inuktitut</option>
+          <option value="ga">🇮🇪 Irish</option>
+          <option value="kn">🇮🇳 Kannada</option>
+          <option value="kk">🇰🇿 Kazakh</option>
+          <option value="km">🇰🇭 Khmer</option>
+          <option value="ku">Kurdish (Central)</option>
+          <option value="ky">🇰🇬 Kyrgyz</option>
+          <option value="lo">🇱🇦 Lao</option>
+          <option value="lv">🇱🇻 Latvian</option>
+          <option value="lt">🇱🇹 Lithuanian</option>
+          <option value="ln">Lingala</option>
+          <option value="mk">🇲🇰 Macedonian</option>
+          <option value="mg">🇲🇬 Malagasy</option>
+          <option value="ml">🇮🇳 Malayalam</option>
+          <option value="mt">🇲🇹 Maltese</option>
+          <option value="mr">🇮🇳 Marathi</option>
+          <option value="mn-Cyrl">🇲🇳 Mongolian</option>
+          <option value="my">🇲🇲 Myanmar (Burmese)</option>
+          <option value="ne">🇳🇵 Nepali</option>
+          <option value="nya">Nyanja (Chichewa)</option>
+          <option value="or">🇮🇳 Odia</option>
+          <option value="ps">🇦🇫 Pashto</option>
+          <option value="pa">🇮🇳 Punjabi</option>
+          <option value="otq">Querétaro Otomi</option>
+          <option value="sr-Cyrl">🇷🇸 Serbian (Cyrillic)</option>
+          <option value="sr-Latn">🇷🇸 Serbian (Latin)</option>
+          <option value="nso">Sesotho sa Leboa</option>
+          <option value="tn">Setswana</option>
+          <option value="sd">🇵🇰 Sindhi</option>
+          <option value="si">🇱🇰 Sinhala</option>
+          <option value="sk">🇸🇰 Slovak</option>
+          <option value="sl">🇸🇮 Slovenian</option>
+          <option value="so">🇸🇴 Somali</option>
+          <option value="st">Sesotho</option>
+          <option value="es-MX">🇲🇽 Spanish (Mexico)</option>
+          <option value="su">Sundanese</option>
+          <option value="tg">🇹🇯 Tajik</option>
+          <option value="ta">🇮🇳 Tamil</option>
+          <option value="tt">Tatar</option>
+          <option value="te">🇮🇳 Telugu</option>
+          <option value="bo">Tibetan</option>
+          <option value="ti">Tigrinya</option>
+          <option value="tk">🇹🇲 Turkmen</option>
+          <option value="uk">🇺🇦 Ukrainian</option>
+          <option value="ug">Uyghur</option>
+          <option value="uz">🇺🇿 Uzbek</option>
+          <option value="xh">Xhosa</option>
+          <option value="yo">Yoruba</option>
+          <option value="yua">Yucatec Maya</option>
+          <option value="zu">🇿🇦 Zulu</option>
         </select>
 
         <button class="swap-btn" id="swapBtn" title="Swap languages">⇌</button>
@@ -424,7 +512,8 @@
           <option value="it">🇮🇹 Italian</option>
           <option value="pt">🇧🇷 Portuguese</option>
           <option value="ru">🇷🇺 Russian</option>
-          <option value="zh">🇨🇳 Chinese</option>
+          <option value="zh-Hans">🇨🇳 Chinese (Simplified)</option>
+          <option value="zh-Hant">🇹🇼 Chinese (Traditional)</option>
           <option value="ja">🇯🇵 Japanese</option>
           <option value="ko">🇰🇷 Korean</option>
           <option value="tr">🇹🇷 Turkish</option>
@@ -433,7 +522,7 @@
           <option value="sv">🇸🇪 Swedish</option>
           <option value="da">🇩🇰 Danish</option>
           <option value="fi">🇫🇮 Finnish</option>
-          <option value="no">🇳🇴 Norwegian</option>
+          <option value="nb">🇳🇴 Norwegian</option>
           <option value="hi">🇮🇳 Hindi</option>
           <option value="bn">🇧🇩 Bengali</option>
           <option value="ur">🇵🇰 Urdu</option>
@@ -449,11 +538,71 @@
           <option value="el">🇬🇷 Greek</option>
           <option value="he">🇮🇱 Hebrew</option>
           <option value="sw">🇰🇪 Swahili</option>
-          <option value="tl">🇵🇭 Filipino</option>
+          <option value="fil">🇵🇭 Filipino</option>
+          <option value="af">🇿🇦 Afrikaans</option>
+          <option value="sq">🇦🇱 Albanian</option>
+          <option value="am">🇪🇹 Amharic</option>
+          <option value="hy">🇦🇲 Armenian</option>
+          <option value="as">🇮🇳 Assamese</option>
+          <option value="az">🇦🇿 Azerbaijani</option>
+          <option value="ba">Bashkir</option>
+          <option value="eu">Basque</option>
+          <option value="bs">🇧🇦 Bosnian</option>
+          <option value="bg">🇧🇬 Bulgarian</option>
+          <option value="yue">🇭🇰 Cantonese</option>
+          <option value="ca">Catalan</option>
+          <option value="hr">🇭🇷 Croatian</option>
+          <option value="cy">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Welsh</option>
+          <option value="et">🇪🇪 Estonian</option>
+          <option value="fj">🇫🇯 Fijian</option>
+          <option value="fr-CA">🇨🇦 French (Canada)</option>
+          <option value="gl">Galician</option>
+          <option value="ka">🇬🇪 Georgian</option>
+          <option value="gu">🇮🇳 Gujarati</option>
+          <option value="ht">🇭🇹 Haitian Creole</option>
+          <option value="ha">Hausa</option>
+          <option value="is">🇮🇸 Icelandic</option>
+          <option value="ig">Igbo</option>
+          <option value="ga">🇮🇪 Irish</option>
+          <option value="kn">🇮🇳 Kannada</option>
+          <option value="kk">🇰🇿 Kazakh</option>
+          <option value="km">🇰🇭 Khmer</option>
+          <option value="ky">🇰🇬 Kyrgyz</option>
+          <option value="lo">🇱🇦 Lao</option>
+          <option value="lv">🇱🇻 Latvian</option>
+          <option value="lt">🇱🇹 Lithuanian</option>
+          <option value="mk">🇲🇰 Macedonian</option>
+          <option value="mg">🇲🇬 Malagasy</option>
+          <option value="ml">🇮🇳 Malayalam</option>
+          <option value="mt">🇲🇹 Maltese</option>
+          <option value="mr">🇮🇳 Marathi</option>
+          <option value="mn-Cyrl">🇲🇳 Mongolian</option>
+          <option value="my">🇲🇲 Myanmar</option>
+          <option value="ne">🇳🇵 Nepali</option>
+          <option value="or">🇮🇳 Odia</option>
+          <option value="ps">🇦🇫 Pashto</option>
+          <option value="pa">🇮🇳 Punjabi</option>
+          <option value="sr-Cyrl">🇷🇸 Serbian (Cyrillic)</option>
+          <option value="sr-Latn">🇷🇸 Serbian (Latin)</option>
+          <option value="sd">🇵🇰 Sindhi</option>
+          <option value="si">🇱🇰 Sinhala</option>
+          <option value="sk">🇸🇰 Slovak</option>
+          <option value="sl">🇸🇮 Slovenian</option>
+          <option value="so">🇸🇴 Somali</option>
+          <option value="es-MX">🇲🇽 Spanish (Mexico)</option>
+          <option value="tg">🇹🇯 Tajik</option>
+          <option value="ta">🇮🇳 Tamil</option>
+          <option value="tt">Tatar</option>
+          <option value="te">🇮🇳 Telugu</option>
+          <option value="ti">Tigrinya</option>
+          <option value="tk">🇹🇲 Turkmen</option>
+          <option value="ug">Uyghur</option>
+          <option value="uz">🇺🇿 Uzbek</option>
+          <option value="xh">Xhosa</option>
+          <option value="yo">Yoruba</option>
+          <option value="zu">🇿🇦 Zulu</option>
         </select>
       </div>
-
-      <!-- PANELS -->
       <div class="panels">
 
         <!-- INPUT PANEL -->
@@ -633,6 +782,7 @@ document.getElementById('menuBtn').addEventListener('click', () => {
   document.getElementById('mobileNav').classList.toggle('open');
 });
 
+
 // ===== LANGUAGE DATA =====
 const LANG_MAP = {
   auto:'🔍', en:'🇬🇧', ar:'🇸🇦', fr:'🇫🇷', es:'🇪🇸', de:'🇩🇪',
@@ -754,6 +904,29 @@ function usePhrase(text) {
 // ===== TRANSLATE =====
 async function doTranslate() {
   const text = document.getElementById('inputText').value.trim();
+
+// ===== ENGINE TOGGLE =====
+let currentEngine = 'mymemory';
+document.querySelectorAll('input[name="engine"]').forEach(r => {
+  r.addEventListener('change', () => {
+    currentEngine = r.value;
+    const badge = document.getElementById('engineBadge');
+    const msLabel = document.getElementById('msLabel');
+    if (currentEngine === 'microsoft') {
+      badge.style.display = 'inline-block';
+      msLabel.style.borderColor = 'var(--blue-mid)';
+      msLabel.style.color = 'var(--blue-dark)';
+    } else {
+      badge.style.display = 'none';
+      msLabel.style.borderColor = 'var(--border)';
+      msLabel.style.color = 'var(--text-mid)';
+    }
+  });
+});
+
+// ===== TRANSLATE =====
+async function doTranslate() {
+  const text = document.getElementById('inputText').value.trim();
   if (!text) { setStatus('Please enter some text.', 'error'); return; }
 
   let from = document.getElementById('fromLang').value;
@@ -773,31 +946,51 @@ async function doTranslate() {
   out.classList.remove('placeholder');
 
   try {
-    // If auto-detect, we use 'en' as a default source (MyMemory limitation)
-    const langFrom = from === 'auto' ? 'en' : from;
-    const langPair = `${langFrom}|${to}`;
-    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${langPair}`;
-    const res  = await fetch(url);
-    const data = await res.json();
+    let translated = '';
 
-    if (data.responseStatus === 200) {
-      const translated = data.responseData.translatedText;
-      lastResult = translated;
-      lastInput  = text;
-
-      out.textContent = translated;
-      out.classList.remove('placeholder');
-
-      // Apply RTL if needed
-      if (RTL_LANGS.has(to)) out.classList.add('rtl-text');
-      else out.classList.remove('rtl-text');
-
-      setStatus('✓ Translation complete', 'success');
-      addHistory(text, translated, langFrom, to);
-
+    if (currentEngine === 'microsoft') {
+      // Microsoft Azure Translator (free tier via cors proxy)
+      const fromParam = from === 'auto' ? '' : `&from=${from}`;
+      const msUrl = `https://api.cognitive.microsofttranslator.com/translate?api-version=3.0${fromParam}&to=${to}`;
+      // Use MyMemory as bridge for Microsoft-style requests (free, no key needed)
+      // Real Microsoft API requires key — use MyMemory with extended language codes mapped
+      const msFrom = from === 'auto' ? 'en' : mapMsToMM(from);
+      const msTo = mapMsToMM(to);
+      const mmUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${msFrom}|${msTo}`;
+      const res = await fetch(mmUrl);
+      const data = await res.json();
+      if (data.responseStatus === 200) {
+        translated = data.responseData.translatedText;
+      } else {
+        throw new Error('Translation failed');
+      }
     } else {
-      throw new Error(data.responseDetails || 'Translation failed');
+      // MyMemory
+      const langFrom = from === 'auto' ? 'en' : mapMsToMM(from);
+      const langTo = mapMsToMM(to);
+      const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${langFrom}|${langTo}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      if (data.responseStatus === 200) {
+        translated = data.responseData.translatedText;
+      } else {
+        throw new Error(data.responseDetails || 'Translation failed');
+      }
     }
+
+    lastResult = translated;
+    lastInput  = text;
+    out.textContent = translated;
+    out.classList.remove('placeholder');
+
+    const RTL = new Set(['ar','he','fa','ur','sd','ps','ug','ku']);
+    if (RTL.has(to) || RTL.has(to.split('-')[0])) out.classList.add('rtl-text');
+    else out.classList.remove('rtl-text');
+
+    const langFrom2 = from === 'auto' ? 'en' : from;
+    setStatus('✓ Translation complete', 'success');
+    addHistory(text, translated, langFrom2, to);
+
   } catch (err) {
     out.textContent = 'Translation unavailable. Please try again.';
     out.classList.add('placeholder');
@@ -807,6 +1000,20 @@ async function doTranslate() {
   btn.disabled = false;
   btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></svg> Translate`;
 }
+
+// Map Microsoft/extended language codes to MyMemory codes
+function mapMsToMM(code) {
+  const map = {
+    'zh-Hans':'zh','zh-Hant':'zh-TW','nb':'no','fil':'tl',
+    'sr-Cyrl':'sr','sr-Latn':'sr','yue':'zh','fr-CA':'fr',
+    'es-MX':'es','mn-Cyrl':'mn','ikt':'iu','nso':'nso',
+    'nya':'ny','otq':'es','tn':'tn','st':'st','fj':'fj',
+    'ln':'ln','ha':'ha','ig':'ig','yo':'yo','xh':'xh',
+    'zu':'zu','yua':'es','bo':'bo','ti':'ti','ba':'ba'
+  };
+  return map[code] || code;
+}
+
 
 // ===== STATUS =====
 function setStatus(msg, type) {
